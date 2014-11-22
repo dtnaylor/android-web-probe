@@ -111,6 +111,21 @@ def main():
             legend='upper left', labelspacing=0.1, handletextpad=0.4,
             xscale='log', height_scale=0.7, width_scale=0.6, ylim=(0, 1.8), additional_ylims=[(0, 35)],
             filename=os.path.join(args.logdir, 'energy_consumption_small.pdf'))
+        
+        myplot.plot([xsizes, xsizes, xsizes, xsizes],
+            [https_extra_energy, https_duration, http_extra_energy, http_duration],
+            labels=['HTTPS Energy', 'HTTPS Time', 'HTTP Energy', 'HTTP Time'],
+            colors=['red', 'red', 'black', 'black'], linestyles=['-', '--', '-', '--'],
+            axis_assignments=[0, 1, 0, 1],
+            xlabel='File Size [kB]', ylabel='Energy per Object [mAh]',
+            #title='Wi-Fi',
+            num_series_on_addl_y_axis=2, additional_ylabels=['Time per Object [s]'],
+            #legend='upper left', 
+            labelspacing=0.1, handletextpad=0.4,
+            xscale='log', yscale='log', additional_yscales=['log'],
+            height_scale=0.7, 
+            #ylim=(0, 1.8), additional_ylims=[(0, 35)],
+            filename=os.path.join(args.logdir, 'energy_consumption.pdf'))
 
 
 
